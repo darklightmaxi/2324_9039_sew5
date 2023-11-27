@@ -1,12 +1,17 @@
 import argparse
 import time
+from copy import copy
 
 """
     @author 9039
 """
 
+"""
+    Variable für die Paths, die gefunden werden
+"""
+paths = []
 
-def dfs(zeile, spalte, lab, visited, path=[], p=(False, 0)):
+def dfs(zeile, spalte, lab, visited, path=[]):
     """
     Eine Methode, die zurückliefert wie viele einzigartige Wege das Labyrinth hat, es wird DFS (Tiefensuche, Depth-First-Search) verwendet
     :param zeile: derzeitiger x Wert
@@ -19,23 +24,40 @@ def dfs(zeile, spalte, lab, visited, path=[], p=(False, 0)):
     """
     count = 0
 
-    if visited[zeile][spalte]:
-        return 0
-    if lab[zeile][spalte] == '#':
+    if visited[zeile][spalte] or lab[zeile][spalte] == '#':
         return 0
     if lab[zeile][spalte] == 'A':
-        if p[0]:
-            print(path)
+        paths.append(copy(path))
         return 1
 
     path.append((zeile, spalte))
     visited[zeile][spalte] = True
-    count = (dfs(zeile + 1, spalte, lab, visited, path, p) + dfs(zeile - 1, spalte, lab, visited, path, p)
-             + dfs(zeile, spalte + 1, lab, visited, path, p) + dfs(zeile, spalte - 1, lab, visited, path, p))
+    count = (dfs(zeile + 1, spalte, lab, visited, path) + dfs(zeile - 1, spalte, lab, visited, path)
+             + dfs(zeile, spalte + 1, lab, visited, path) + dfs(zeile, spalte - 1, lab, visited, path))
     visited[zeile][spalte] = False
     del path[-1]
 
     return count
+
+def printPaths(lab):
+    """
+    Printet die verschiedenen Paths des Labyrinths
+    :param lab: Labyrinth
+    """
+    modified_lab = copy(lab)
+    for i in range(len(lab)):
+        modified_lab[i] = list(lab[i])
+
+    for path in paths:
+        for x, y in path:
+            modified_lab[x][y] = 'X'
+
+        for i in modified_lab:
+            print(''.join(i))
+
+        modified_lab = copy(lab)
+        for i in range(len(lab)):
+            modified_lab[i] = list(lab[i])
 
 
 parser = argparse.ArgumentParser(description='calculate number of ways through a labyrinth', add_help=True)
@@ -71,10 +93,10 @@ vis = [[False for _ in range(len(lab))] for _ in range(len(lab[0]))]
 if t:
     start_time = time.time()
 
-if p:
-    p = True
+print(f'Anzahl Wege: {dfs(x, y, lab, vis)}')
 
-print(f'Anzahl Wege: {dfs(x, y, lab, vis, p=(p, d))}')
+if p:
+    printPaths(lab)
 
 if t:
     end_time = time.time()
