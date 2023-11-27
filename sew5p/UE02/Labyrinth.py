@@ -58,7 +58,7 @@ if t:
 if p:
     p=True
 
-print(dfs(x, y, lab, vis, p=(p,d)))
+print(f'Anzahl Wege: {dfs(x, y, lab, vis, p=(p,d))}')
 
 if t:
     end_time = time.time()
