@@ -1,18 +1,22 @@
 import argparse
 import time
 
-def dfs(zeile, spalte, lab, visited):
+def dfs(zeile, spalte, lab, visited, path=[]):
     count = 0
+
     if visited[zeile][spalte]:
         return 0
     if lab[zeile][spalte] == '#':
         return 0
     if lab[zeile][spalte] == 'A':
+        print(path)
         return 1
 
+    path.append((zeile, spalte))
     visited[zeile][spalte] = True
-    count = dfs(zeile + 1, spalte, lab, visited) + dfs(zeile - 1, spalte, lab, visited) + dfs(zeile, spalte + 1, lab, visited) + dfs(zeile, spalte - 1, lab, visited)
+    count = dfs(zeile + 1, spalte, lab, visited, path) + dfs(zeile - 1, spalte, lab, visited, path) + dfs(zeile, spalte + 1, lab, visited, path) + dfs(zeile, spalte - 1, lab, visited, path)
     visited[zeile][spalte] = False
+    del path[-1]
 
     return count
 
@@ -53,4 +57,4 @@ print(dfs(x, y, lab, vis))
 
 if t:
     end_time = time.time()
-    print(f'{round((end_time-start_time)*1000, 2)}ms')
+    print(f'Time: {round((end_time-start_time)*1000, 2)}ms')
