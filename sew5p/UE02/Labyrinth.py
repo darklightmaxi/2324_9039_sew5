@@ -5,7 +5,8 @@ import time
     @author 9039
 """
 
-def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
+
+def dfs(zeile, spalte, lab, visited, path=[], p=(False, 0)):
     """
     Eine Methode, die zurückliefert wie viele einzigartige Wege das Labyrinth hat, es wird DFS (Tiefensuche, Depth-First-Search) verwendet
     :param zeile: derzeitiger x Wert
@@ -23,7 +24,7 @@ def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
     if lab[zeile][spalte] == '#':
         return 0
     if lab[zeile][spalte] == 'A':
-        if p:
+        if p[0]:
             print(path)
         return 1
 
@@ -35,6 +36,7 @@ def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
     del path[-1]
 
     return count
+
 
 parser = argparse.ArgumentParser(description='calculate number of ways through a labyrinth', add_help=True)
 
@@ -70,10 +72,10 @@ if t:
     start_time = time.time()
 
 if p:
-    p=True
+    p = True
 
-print(f'Anzahl Wege: {dfs(x, y, lab, vis, p=(p,d))}')
+print(f'Anzahl Wege: {dfs(x, y, lab, vis, p=(p, d))}')
 
 if t:
     end_time = time.time()
-    print(f'Time: {round((end_time-start_time)*1000, 2)}ms')
+    print(f'Time: {round((end_time - start_time) * 1000, 2)}ms')
