@@ -137,6 +137,7 @@ public class Labyrinth {
             queue.add(new pair(object.x, object.y - 1));
             queue.add(new pair(object.x - 1, object.y));
 
+/*
             char[][] copyLab = new char[lab.length][lab[0].length];
 
             for (int i = 0; i < lab.length; i++){
@@ -152,6 +153,10 @@ public class Labyrinth {
             Thread.sleep(1);
 
             System.out.println();
+
+
+
+ */
         }
 
         return false;
@@ -184,7 +189,7 @@ public class Labyrinth {
     public static void main(String[] args) throws IOException, InterruptedException {
         char[][] labyrinth = fromStrings(maps[2]);
 
-        String file = "src/UE02/l3.txt";
+        String file = "src/UE02/l2.txt";
         ArrayList<String> in = (ArrayList<String>) Files.readAllLines(Path.of(file));
         char[][] labyrinth2 = new char[in.size()][in.get(0).length()];
 
@@ -193,13 +198,13 @@ public class Labyrinth {
             labyrinth2[i] = (s.toCharArray());
         }
 
-        /*
+
         //printLabyrinth(labyrinth);
-        System.out.println("Test Labyrinth");
-        System.out.println("Ausgang gefunden: " + (suchen(5, 5, labyrinth) ? "ja" : "nein"));
-        System.out.println("Anzahl Wege: " + suchenAlle(5, 5, labyrinth));
-        System.out.println();
-        */
+        //System.out.println("Test Labyrinth");
+        //System.out.println("Ausgang gefunden: " + (suchen(5, 5, labyrinth) ? "ja" : "nein"));
+        //System.out.println("Anzahl Wege: " + suchenAlle(5, 5, labyrinth));
+        //System.out.println();
+
 
         //printLabyrinth(labyrinth2);
         System.out.println("Labyrinth aus File");

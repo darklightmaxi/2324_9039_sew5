@@ -1,7 +1,21 @@
 import argparse
 import time
 
+"""
+    @author 9039
+"""
+
 def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
+    """
+    Eine Methode, die zurückliefert wie viele einzigartige Wege das Labyrinth hat
+    :param zeile: derzeitiger x Wert
+    :param spalte: derzeitiger y Wert
+    :param lab: labyrinth
+    :param visited: besuchte Koordinaten
+    :param path: Pfad des Weges
+    :param p: print ? yes:no
+    :return: Anzahl der möglichen Wege durch das Labyrinth
+    """
     count = 0
 
     if visited[zeile][spalte]:
