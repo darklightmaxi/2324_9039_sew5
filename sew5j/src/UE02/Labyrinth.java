@@ -184,7 +184,7 @@ public class Labyrinth {
     public static void main(String[] args) throws IOException, InterruptedException {
         char[][] labyrinth = fromStrings(maps[2]);
 
-        String file = "src/UE02/l2.txt";
+        String file = "src/UE02/l3.txt";
         ArrayList<String> in = (ArrayList<String>) Files.readAllLines(Path.of(file));
         char[][] labyrinth2 = new char[in.size()][in.get(0).length()];
 
