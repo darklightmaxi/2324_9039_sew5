@@ -178,9 +178,7 @@ public class Labyrinth {
 
         int count = 0;
 
-        if (visited[zeile][spalte]) return 0;
-
-        if (lab[zeile][spalte] == '#') return 0;
+        if (visited[zeile][spalte] || lab[zeile][spalte] == '#') return 0;
 
         if (lab[zeile][spalte] == 'A') return 1;
 
