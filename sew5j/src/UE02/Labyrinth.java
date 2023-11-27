@@ -88,7 +88,7 @@ public class Labyrinth {
 
 
     /**
-     * Ausgabe des Layrinths
+     * Ausgabe des Labyrinths
      * @param lab
      */
     public static void printLabyrinth(char[][] lab) {

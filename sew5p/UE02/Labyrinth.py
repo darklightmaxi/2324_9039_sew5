@@ -67,8 +67,8 @@ parser.add_argument('--xstart', '-x', default=1, type=int, help='x-coordinate to
 parser.add_argument('--ystart', '-y', default=1, type=int, help='y-coordinate to start')
 
 # print
-parser.add_argument('--print', '-p', default=False, type=bool, help='print output of every solution')
-parser.add_argument('--time', '-t', default=None, type=int, help='print total calculation time (in milliseconds)')
+parser.add_argument('--print', '-p', action="store_true", help='print output of every solution')
+parser.add_argument('--time', '-t', action="store_true", help='print total calculation time (in milliseconds)')
 parser.add_argument('--delay', '-d', default=None, type=int, help='delay after printing a solution (in milliseconds)')
 
 # input-file VERPFLICHTEND

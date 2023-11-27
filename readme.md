@@ -7,3 +7,7 @@ Das wichtigste zuerst: Nein, ich bin nicht mehr an der Schule, aber ich versuch 
 #Wichtig 
 1. Ihr müsst teilweise, zumindest ist es bei Zainzi so, "euren" Code verstehen. Dh. lest ihn euch zumindest einmal durch. 
 2. PyDoc, JavaDoc sollte nicht meinen Namen enthalten bzw meine Nummer.
+
+#Scores
+1. UE01: 0%
+2. UE02: 100%
