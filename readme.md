@@ -7,6 +7,7 @@ Das wichtigste zuerst: Nein, ich bin nicht mehr an der Schule, aber ich versuch 
 #Wichtig 
 1. Ihr müsst teilweise, zumindest ist es bei Zainzi so, "euren" Code verstehen. Dh. lest ihn euch zumindest einmal durch. 
 2. PyDoc, JavaDoc sollte nicht meinen Namen enthalten bzw meine Nummer.
+3. Ich versuche nach Möglichkeit bei Zainzi oder Wagner abzunehmen und Breunig aus dem Weg zu gehen.
 
 #Scores
 1. UE01: 0%
