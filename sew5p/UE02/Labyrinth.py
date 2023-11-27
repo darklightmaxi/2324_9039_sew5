@@ -1,7 +1,7 @@
 import argparse
 import time
 
-def dfs(zeile, spalte, lab, visited, path=[]):
+def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
     count = 0
 
     if visited[zeile][spalte]:
@@ -9,12 +9,14 @@ def dfs(zeile, spalte, lab, visited, path=[]):
     if lab[zeile][spalte] == '#':
         return 0
     if lab[zeile][spalte] == 'A':
-        print(path)
+        if p:
+            print(path)
         return 1
 
     path.append((zeile, spalte))
     visited[zeile][spalte] = True
-    count = dfs(zeile + 1, spalte, lab, visited, path) + dfs(zeile - 1, spalte, lab, visited, path) + dfs(zeile, spalte + 1, lab, visited, path) + dfs(zeile, spalte - 1, lab, visited, path)
+    count = (dfs(zeile + 1, spalte, lab, visited, path, p) + dfs(zeile - 1, spalte, lab, visited, path, p)
+             + dfs(zeile, spalte + 1, lab, visited, path, p) + dfs(zeile, spalte - 1, lab, visited, path, p))
     visited[zeile][spalte] = False
     del path[-1]
 
@@ -27,7 +29,7 @@ parser.add_argument('--xstart', '-x', default=1, type=int, help='x-coordinate to
 parser.add_argument('--ystart', '-y', default=1, type=int, help='y-coordinate to start')
 
 # print
-parser.add_argument('--print', '-p', default=None, type=bool, help='print output of every solution')
+parser.add_argument('--print', '-p', default=False, type=bool, help='print output of every solution')
 parser.add_argument('--time', '-t', default=None, type=int, help='print total calculation time (in milliseconds)')
 parser.add_argument('--delay', '-d', default=None, type=int, help='delay after printing a solution (in milliseconds)')
 
@@ -53,7 +55,10 @@ vis = [[False for _ in range(len(lab))] for _ in range(len(lab[0]))]
 if t:
     start_time = time.time()
 
-print(dfs(x, y, lab, vis))
+if p:
+    p=True
+
+print(dfs(x, y, lab, vis, p=(p,d)))
 
 if t:
     end_time = time.time()
