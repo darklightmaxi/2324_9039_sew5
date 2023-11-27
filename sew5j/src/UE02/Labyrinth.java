@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Queue;
 
 /**
- * @author Maximilian Kniely
+ * @author 9039
+ * Klasse für Labyrinthe
  */
 public class Labyrinth {
     public static String[][] maps = {{
@@ -69,8 +70,7 @@ public class Labyrinth {
     }};
 
     /**
-     * Wandelt (unveränderliche) Strings in Char-Arrays
-     *
+     * Wandelt (unveränderliche) Strings in Char-Arrays um
      * @param map der Plan, ein String je Zeile
      * @return char[][] des Plans
      */
@@ -89,7 +89,6 @@ public class Labyrinth {
 
     /**
      * Ausgabe des Layrinths
-     *
      * @param lab
      */
     public static void printLabyrinth(char[][] lab) {
@@ -101,11 +100,10 @@ public class Labyrinth {
     }
 
     /**
-     * Suche den Weg
-     *
-     * @param zeile  aktuelle Position
-     * @param spalte aktuelle Position
-     * @param lab
+     * Eine Methode, die nach einem Weg sucht, und true/false returnt je nach Antwort, die BFS wird mit einer Queue und einer Schleife realisiert
+     * @param zeile  aktuelle Position (X)
+     * @param spalte aktuelle Position (Y)
+     * @param lab labyrinth
      * @throws InterruptedException für die verlangsamte Ausgabe mit sleep()
      */
 
@@ -137,7 +135,6 @@ public class Labyrinth {
             queue.add(new pair(object.x, object.y - 1));
             queue.add(new pair(object.x - 1, object.y));
 
-/*
             char[][] copyLab = new char[lab.length][lab[0].length];
 
             for (int i = 0; i < lab.length; i++){
@@ -153,19 +150,30 @@ public class Labyrinth {
             Thread.sleep(1);
 
             System.out.println();
-
-
-
- */
         }
 
         return false;
     }
 
+    /**
+     * Pseudomethode für dfs
+     * @param zeile  aktuelle Position (X)
+     * @param spalte aktuelle Position (Y)
+     * @param lab Labyrinth
+     * @return Anzahl aller einzigartigen Wege
+     */
     public static int suchenAlle(int zeile, int spalte, char[][] lab) {
         return dfs(zeile, spalte, lab, new boolean[lab.length][lab[0].length]);
     }
 
+    /**
+     * Sucht die Anzahl aller Wege durch ein Labyrinth. Hierfür wird DFS (Depth-First-Search, Tiefensuche) verwendet.
+     * @param zeile  aktuelle Position (X)
+     * @param spalte aktuelle Position (Y)
+     * @param lab    Labyrinth
+     * @param visited ein 2dim Array, welches Zeigt wo man bereits war
+     * @return Anzahl der einzigartigen Wege
+     */
     public static int dfs(int zeile, int spalte, char[][] lab, boolean[][] visited) {
 
         int count = 0;
@@ -186,6 +194,12 @@ public class Labyrinth {
     }
 
 
+    /**
+     * Ja die braucht man halt
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws IOException, InterruptedException {
         char[][] labyrinth = fromStrings(maps[2]);
 

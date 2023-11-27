@@ -7,7 +7,7 @@ import time
 
 def dfs(zeile, spalte, lab, visited, path=[], p=(False,0)):
     """
-    Eine Methode, die zurückliefert wie viele einzigartige Wege das Labyrinth hat
+    Eine Methode, die zurückliefert wie viele einzigartige Wege das Labyrinth hat, es wird DFS (Tiefensuche, Depth-First-Search) verwendet
     :param zeile: derzeitiger x Wert
     :param spalte: derzeitiger y Wert
     :param lab: labyrinth
