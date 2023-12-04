@@ -16,6 +16,7 @@ import logging.handlers
 import unidecode
 import re
 
+
 logger = logging.getLogger(__name__)
 handler = logging.handlers.RotatingFileHandler("create_user.log", maxBytes=10000, backupCount=5)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
