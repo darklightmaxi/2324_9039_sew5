@@ -201,7 +201,7 @@ public class Labyrinth {
     public static void main(String[] args) throws IOException, InterruptedException {
         char[][] labyrinth = fromStrings(maps[2]);
 
-        String file = "src/UE02/l2.txt";
+        String file = "src/UE02/l1.txt";
         ArrayList<String> in = (ArrayList<String>) Files.readAllLines(Path.of(file));
         char[][] labyrinth2 = new char[in.size()][in.get(0).length()];
 
@@ -221,8 +221,6 @@ public class Labyrinth {
         //printLabyrinth(labyrinth2);
         System.out.println("Labyrinth aus File");
         System.out.println("Ausgang gefunden: " + (suchen(5, 5, labyrinth2) ? "ja" : "nein"));
-
-
         System.out.println("Anzahl Wege: " + suchenAlle(5, 5, labyrinth2));
     }
 

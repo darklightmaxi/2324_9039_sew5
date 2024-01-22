@@ -19,7 +19,6 @@ def dfs(zeile, spalte, lab, visited, path=[]):
     :param lab: labyrinth
     :param visited: besuchte Koordinaten
     :param path: Pfad des Weges
-    :param p: print ? yes:no
     :return: Anzahl der möglichen Wege durch das Labyrinth
     """
     count = 0
