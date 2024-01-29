@@ -1,0 +1,170 @@
+2024-01-29 10:18:50,293 - INFO - Starting file creation
+2024-01-29 10:18:50,293 - INFO - Creating credentials sheet
+2024-01-29 10:18:50,294 - INFO - Creating user: lehrer
+2024-01-29 10:18:50,294 - INFO - Deleting user: lehrer
+2024-01-29 10:18:50,295 - INFO - Adding credentials for user: lehrer
+2024-01-29 10:18:50,295 - INFO - Creating user: seminar
+2024-01-29 10:18:50,295 - INFO - Deleting user: seminar
+2024-01-29 10:18:50,295 - INFO - Adding credentials for user: seminar
+2024-01-29 10:18:50,304 - INFO - Generating password
+2024-01-29 10:18:50,304 - INFO - Creating user: 1AM
+2024-01-29 10:18:50,304 - INFO - Deleting user: 1AM
+2024-01-29 10:18:50,304 - INFO - Adding credentials for user: 1AM
+2024-01-29 10:18:50,304 - INFO - Generating password
+2024-01-29 10:18:50,304 - INFO - Creating user: 1BM
+2024-01-29 10:18:50,305 - INFO - Deleting user: 1BM
+2024-01-29 10:18:50,305 - INFO - Adding credentials for user: 1BM
+2024-01-29 10:18:50,305 - INFO - Generating password
+2024-01-29 10:18:50,305 - INFO - Creating user: 1CM
+2024-01-29 10:18:50,305 - INFO - Deleting user: 1CM
+2024-01-29 10:18:50,305 - INFO - Adding credentials for user: 1CM
+2024-01-29 10:18:50,305 - INFO - Generating password
+2024-01-29 10:18:50,305 - INFO - Creating user: 2AM
+2024-01-29 10:18:50,305 - INFO - Deleting user: 2AM
+2024-01-29 10:18:50,305 - INFO - Adding credentials for user: 2AM
+2024-01-29 10:18:50,306 - INFO - Generating password
+2024-01-29 10:18:50,306 - INFO - Creating user: 2BM
+2024-01-29 10:18:50,306 - INFO - Deleting user: 2BM
+2024-01-29 10:18:50,306 - INFO - Adding credentials for user: 2BM
+2024-01-29 10:18:50,306 - INFO - Generating password
+2024-01-29 10:18:50,306 - INFO - Creating user: 2CM
+2024-01-29 10:18:50,306 - INFO - Deleting user: 2CM
+2024-01-29 10:18:50,306 - INFO - Adding credentials for user: 2CM
+2024-01-29 10:18:50,306 - INFO - Generating password
+2024-01-29 10:18:50,306 - INFO - Creating user: 3AM
+2024-01-29 10:18:50,306 - INFO - Deleting user: 3AM
+2024-01-29 10:18:50,306 - INFO - Adding credentials for user: 3AM
+2024-01-29 10:18:50,306 - INFO - Generating password
+2024-01-29 10:18:50,306 - INFO - Creating user: 3BM
+2024-01-29 10:18:50,306 - INFO - Deleting user: 3BM
+2024-01-29 10:18:50,307 - INFO - Adding credentials for user: 3BM
+2024-01-29 10:18:50,307 - INFO - Generating password
+2024-01-29 10:18:50,307 - INFO - Creating user: 3CM
+2024-01-29 10:18:50,307 - INFO - Deleting user: 3CM
+2024-01-29 10:18:50,307 - INFO - Adding credentials for user: 3CM
+2024-01-29 10:18:50,307 - INFO - Generating password
+2024-01-29 10:18:50,307 - INFO - Creating user: 4AM
+2024-01-29 10:18:50,307 - INFO - Deleting user: 4AM
+2024-01-29 10:18:50,307 - INFO - Adding credentials for user: 4AM
+2024-01-29 10:18:50,308 - INFO - Generating password
+2024-01-29 10:18:50,308 - INFO - Creating user: 4BM
+2024-01-29 10:18:50,308 - INFO - Deleting user: 4BM
+2024-01-29 10:18:50,308 - INFO - Adding credentials for user: 4BM
+2024-01-29 10:18:50,308 - INFO - Generating password
+2024-01-29 10:18:50,308 - INFO - Creating user: 4CM
+2024-01-29 10:18:50,308 - INFO - Deleting user: 4CM
+2024-01-29 10:18:50,308 - INFO - Adding credentials for user: 4CM
+2024-01-29 10:18:50,308 - INFO - Generating password
+2024-01-29 10:18:50,309 - INFO - Creating user: 5AM
+2024-01-29 10:18:50,309 - INFO - Deleting user: 5AM
+2024-01-29 10:18:50,309 - INFO - Adding credentials for user: 5AM
+2024-01-29 10:18:50,309 - INFO - Generating password
+2024-01-29 10:18:50,309 - INFO - Creating user: 5BM
+2024-01-29 10:18:50,309 - INFO - Deleting user: 5BM
+2024-01-29 10:18:50,309 - INFO - Adding credentials for user: 5BM
+2024-01-29 10:18:50,309 - INFO - Generating password
+2024-01-29 10:18:50,309 - INFO - Creating user: 5CM
+2024-01-29 10:18:50,310 - INFO - Deleting user: 5CM
+2024-01-29 10:18:50,310 - INFO - Adding credentials for user: 5CM
+2024-01-29 10:18:50,310 - INFO - Generating password
+2024-01-29 10:18:50,310 - INFO - Creating user: 1AF
+2024-01-29 10:18:50,310 - INFO - Deleting user: 1AF
+2024-01-29 10:18:50,310 - INFO - Adding credentials for user: 1AF
+2024-01-29 10:18:50,310 - INFO - Generating password
+2024-01-29 10:18:50,310 - INFO - Creating user: 1BF
+2024-01-29 10:18:50,311 - INFO - Deleting user: 1BF
+2024-01-29 10:18:50,311 - INFO - Adding credentials for user: 1BF
+2024-01-29 10:18:50,311 - INFO - Generating password
+2024-01-29 10:18:50,311 - INFO - Creating user: 1CF
+2024-01-29 10:18:50,311 - INFO - Deleting user: 1CF
+2024-01-29 10:18:50,311 - INFO - Adding credentials for user: 1CF
+2024-01-29 10:18:50,311 - INFO - Generating password
+2024-01-29 10:18:50,311 - INFO - Creating user: 2AF
+2024-01-29 10:18:50,311 - INFO - Deleting user: 2AF
+2024-01-29 10:18:50,312 - INFO - Adding credentials for user: 2AF
+2024-01-29 10:18:50,312 - INFO - Generating password
+2024-01-29 10:18:50,312 - INFO - Creating user: 2BF
+2024-01-29 10:18:50,312 - INFO - Deleting user: 2BF
+2024-01-29 10:18:50,312 - INFO - Adding credentials for user: 2BF
+2024-01-29 10:18:50,312 - INFO - Generating password
+2024-01-29 10:18:50,312 - INFO - Creating user: 3AFI
+2024-01-29 10:18:50,312 - INFO - Deleting user: 3AFI
+2024-01-29 10:18:50,313 - INFO - Adding credentials for user: 3AFI
+2024-01-29 10:18:50,313 - INFO - Generating password
+2024-01-29 10:18:50,313 - INFO - Creating user: 3BFN
+2024-01-29 10:18:50,313 - INFO - Deleting user: 3BFN
+2024-01-29 10:18:50,313 - INFO - Adding credentials for user: 3BFN
+2024-01-29 10:18:50,313 - INFO - Generating password
+2024-01-29 10:18:50,313 - INFO - Creating user: 4AFI
+2024-01-29 10:18:50,313 - INFO - Deleting user: 4AFI
+2024-01-29 10:18:50,313 - INFO - Adding credentials for user: 4AFI
+2024-01-29 10:18:50,314 - INFO - Generating password
+2024-01-29 10:18:50,314 - INFO - Creating user: 4BFN
+2024-01-29 10:18:50,314 - INFO - Deleting user: 4BFN
+2024-01-29 10:18:50,314 - INFO - Adding credentials for user: 4BFN
+2024-01-29 10:18:50,314 - INFO - Generating password
+2024-01-29 10:18:50,314 - INFO - Creating user: 1AI
+2024-01-29 10:18:50,314 - INFO - Deleting user: 1AI
+2024-01-29 10:18:50,314 - INFO - Adding credentials for user: 1AI
+2024-01-29 10:18:50,315 - INFO - Generating password
+2024-01-29 10:18:50,315 - INFO - Creating user: 1BI
+2024-01-29 10:18:50,315 - INFO - Deleting user: 1BI
+2024-01-29 10:18:50,315 - INFO - Adding credentials for user: 1BI
+2024-01-29 10:18:50,315 - INFO - Generating password
+2024-01-29 10:18:50,315 - INFO - Creating user: 1CI
+2024-01-29 10:18:50,315 - INFO - Deleting user: 1CI
+2024-01-29 10:18:50,315 - INFO - Adding credentials for user: 1CI
+2024-01-29 10:18:50,315 - INFO - Generating password
+2024-01-29 10:18:50,315 - INFO - Creating user: 2AI
+2024-01-29 10:18:50,316 - INFO - Deleting user: 2AI
+2024-01-29 10:18:50,316 - INFO - Adding credentials for user: 2AI
+2024-01-29 10:18:50,316 - INFO - Generating password
+2024-01-29 10:18:50,316 - INFO - Creating user: 2BI
+2024-01-29 10:18:50,316 - INFO - Deleting user: 2BI
+2024-01-29 10:18:50,316 - INFO - Adding credentials for user: 2BI
+2024-01-29 10:18:50,316 - INFO - Generating password
+2024-01-29 10:18:50,316 - INFO - Creating user: 2CI
+2024-01-29 10:18:50,316 - INFO - Deleting user: 2CI
+2024-01-29 10:18:50,316 - INFO - Adding credentials for user: 2CI
+2024-01-29 10:18:50,317 - INFO - Generating password
+2024-01-29 10:18:50,317 - INFO - Creating user: 3AI
+2024-01-29 10:18:50,317 - INFO - Deleting user: 3AI
+2024-01-29 10:18:50,317 - INFO - Adding credentials for user: 3AI
+2024-01-29 10:18:50,317 - INFO - Generating password
+2024-01-29 10:18:50,317 - INFO - Creating user: 3BI
+2024-01-29 10:18:50,317 - INFO - Deleting user: 3BI
+2024-01-29 10:18:50,317 - INFO - Adding credentials for user: 3BI
+2024-01-29 10:18:50,317 - INFO - Generating password
+2024-01-29 10:18:50,318 - INFO - Creating user: 3CI
+2024-01-29 10:18:50,318 - INFO - Deleting user: 3CI
+2024-01-29 10:18:50,318 - INFO - Adding credentials for user: 3CI
+2024-01-29 10:18:50,318 - INFO - Generating password
+2024-01-29 10:18:50,318 - INFO - Creating user: 4AI
+2024-01-29 10:18:50,318 - INFO - Deleting user: 4AI
+2024-01-29 10:18:50,318 - INFO - Adding credentials for user: 4AI
+2024-01-29 10:18:50,319 - INFO - Generating password
+2024-01-29 10:18:50,319 - INFO - Creating user: 4BI
+2024-01-29 10:18:50,319 - INFO - Deleting user: 4BI
+2024-01-29 10:18:50,319 - INFO - Adding credentials for user: 4BI
+2024-01-29 10:18:50,319 - INFO - Generating password
+2024-01-29 10:18:50,319 - INFO - Creating user: 4CN
+2024-01-29 10:18:50,319 - INFO - Deleting user: 4CN
+2024-01-29 10:18:50,319 - INFO - Adding credentials for user: 4CN
+2024-01-29 10:18:50,319 - INFO - Generating password
+2024-01-29 10:18:50,320 - INFO - Creating user: 5AX
+2024-01-29 10:18:50,320 - INFO - Deleting user: 5AX
+2024-01-29 10:18:50,320 - INFO - Adding credentials for user: 5AX
+2024-01-29 10:18:50,320 - INFO - Generating password
+2024-01-29 10:18:50,320 - INFO - Creating user: 5BI
+2024-01-29 10:18:50,320 - INFO - Deleting user: 5BI
+2024-01-29 10:18:50,320 - INFO - Adding credentials for user: 5BI
+2024-01-29 10:18:50,320 - INFO - Generating password
+2024-01-29 10:18:50,320 - INFO - Creating user: 5CN
+2024-01-29 10:18:50,321 - INFO - Deleting user: 5CN
+2024-01-29 10:18:50,321 - INFO - Adding credentials for user: 5CN
+2024-01-29 10:18:50,321 - INFO - Generating password
+2024-01-29 10:18:50,321 - INFO - Creating user: 1AO
+2024-01-29 10:18:50,321 - INFO - Deleting user: 1AO
+2024-01-29 10:18:50,321 - INFO - Adding credentials for user: 1AO
+2024-01-29 10:18:50,322 - INFO - Saving credentials to file
+2024-01-29 10:18:50,336 - INFO - Files created
