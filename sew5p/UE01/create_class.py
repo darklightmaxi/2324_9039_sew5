@@ -1,6 +1,7 @@
-'''
+"""
 @Author: Maximilian Kniely
-'''
+"""
+
 import argparse
 import random
 import sys
@@ -29,9 +30,9 @@ quiet = False
 
 def read_file(path: str) -> Generator:
     """
-    Liest Excel datei und gibt zeilen aus (Yield)
-    :param path:
-    :return:
+    Liest Excel und yielded einzelne Zeilen
+    :param path: Pfad zur Datei
+    :return: Generator aus den Zeilen
     """
     try:
         wb = load_workbook(path, read_only=True)
@@ -42,11 +43,13 @@ def read_file(path: str) -> Generator:
             yield [row[0].value, row[1].value, row[2].value]
     except:
         logger.error("Datei nicht gefunden")
+
+
 def shave_marks(s: str) -> str:
     """
     Remove all diacritic marks
-    :param s:
-    :return:
+    :param s: String to remove diacritic marks
+    :return: String without diacritic marks
     """
     norm_txt = unicodedata.normalize('NFD', s)
     shaved = ''.join(c for c in norm_txt
@@ -56,8 +59,8 @@ def shave_marks(s: str) -> str:
 
 def replace_umlaut(s: str) -> str:
     """
-    Ersetzt Umlaute
-    :param s:
+    Ersätzt Umlaute und ß
+    :param s: Inputstring
     :return:
     """
     replacements = {
@@ -73,19 +76,20 @@ def replace_umlaut(s: str) -> str:
         s = s.replace(umlaut, replacement)
     return shave_marks(s)
 
+
 def create_user(i: List[str], file, pwd: str) -> None:
     """
-    UserCreates (Commands) erstellen und in file schreiben
-    :param i:
-    :param file:
-    :param pwd:
-    :return:
+    UserCreates Commands erstellen und in file schreiben
+    :param i: Infos des Users
+    :param file: File in das geschrieben werden soll
+    :param pwd: Passwort
+    :return: None
     """
     logger.info(f"Creating user: {i[0]}")
     if verbose:
         print(f"echo creating user: {i[0]}", file=file)
     command1 = (
-        f"getent passwd k{replace_umlaut(str(i[0]).lower())} > /dev/null && echo 'User " 
+        f"getent passwd k{replace_umlaut(str(i[0]).lower())} > /dev/null && echo 'User "
         f"{replace_umlaut(str(i[0]).lower())} already exists. Aborting.' && exit 1 || true"
     )
     command2 = f"groupadd {replace_umlaut(str(i[0]).lower())}"
@@ -104,21 +108,23 @@ def create_user(i: List[str], file, pwd: str) -> None:
     print(command3, file=file)
     print(command4, file=file)
 
+
 def delete_user(i: List[str], file) -> None:
     """
     Löscht einen User
-    :param i:
-    :param file:
-    :return:
+    :param i: Infos des Users
+    :param file: File in das geschrieben werden soll
+    :return: None
     """
     logger.info(f"Deleting user: {i[0]}")
     if verbose: print(f"echo deleting user: {i[0]}", file=file)
     command = "userdel -r k" + replace_umlaut(str(i[0]).lower())
     print(command, file=file)
 
+
 def create_credentials() -> Tuple[openpyxl.workbook.workbook.Workbook, openpyxl.worksheet.worksheet.Worksheet]:
     """
-    Erzeugt excel worksheet für creds
+    Erzeugt Excel Worksheet mit Credentials
     :return:
     """
     logger.info("Creating credentials sheet")
@@ -129,22 +135,24 @@ def create_credentials() -> Tuple[openpyxl.workbook.workbook.Workbook, openpyxl.
     sheet["B1"] = "Password"
     return workbook, sheet
 
+
 def escape_quote(s: str) -> str:
     """
-    ersetzt sonderzeichen (",',`) sodass es ein normaler string ist und diese richtig angezeigt werden
-    :param s:
-    :return:
+    Ersetzt Sonderzeichen, damit es ein normaler string wird und diese richtig angezeigt werden
+    :param s: String
+    :return: String
     """
     return s.replace('"', '\\"').replace("'", "\\'").replace("`", "\\`")
 
-def generate_password(class_name: str, room: str, kv: str, passwordList:set) -> str:
+
+def generate_password(class_name: str, room: str, kv: str, passwordList: set) -> str:
     """
-    erzeugt ein password
-    :param class_name:
-    :param room:
-    :param kv:
-    :param passwordList:
-    :return:
+    Erzeugt ein einzigartiges password
+    :param class_name: Klassenname
+    :param room: Raum
+    :param kv: Klassenvorstand
+    :param passwordList: Passwortliste zum Vergleich ob es Unique ist
+    :return: String Passwort
     """
     logger.info("Generating password")
     chars = "1%&(),._-=^#"
@@ -155,24 +163,25 @@ def generate_password(class_name: str, room: str, kv: str, passwordList:set) -> 
             break
     return password
 
+
 def add_credentials(sheet: openpyxl.worksheet.worksheet.Worksheet, name: str, row: int, pwd: str) -> None:
     """
-    Fügt creds zum Excel
-    :param sheet:
-    :param i:
-    :param row:
-    :param pwd:
-    :return:
+    Fügt creds zum Excel hinzu
+    :param sheet: Excel Sheet
+    :param row: Zeile
+    :param pwd: Passwort
+    :return: None
     """
     logger.info(f"Adding credentials for user: {name}")
     sheet[f"A{row}"] = name
     sheet[f"B{row}"] = pwd
 
+
 def save_credentials(workbook: openpyxl.workbook.workbook.Workbook) -> None:
     """
-    Speichert creds
-    :param workbook:
-    :return:
+    Speichert credentials
+    :param workbook: Excel Worksheet
+    :return: None
     """
     logger.info("Saving credentials to file")
     workbook.save("user_credentials.xlsx")
@@ -180,11 +189,11 @@ def save_credentials(workbook: openpyxl.workbook.workbook.Workbook) -> None:
 
 def create_user_by_name(username: str, create_file, delete_file) -> None:
     """
-    erzeugt mit einem namen einen user und das zugehörige delete file
-    :param username:
-    :param create_file:
-    :param delete_file:
-    :return:
+    Erzeugt mit einem namen einen User und das zugehörige delete file
+    :param username: Username
+    :param create_file: File to Create the User to
+    :param delete_file: File to Delete the User
+    :return: None
     """
     logger.info(f"Creating user: {username}")
     if verbose: print(f"echo creating user: {username}", file=create_file)
@@ -204,11 +213,12 @@ def create_user_by_name(username: str, create_file, delete_file) -> None:
     command = "userdel -r " + username
     print(command, file=delete_file)
 
+
 def create_files(path: str) -> None:
     """
     Itariert durch alle User und erzeugt die dazugehörigen files
-    :param path:
-    :return:
+    :param path: Pdaf zum File
+    :return: None
     """
     logger.info("Starting file creation")
     worksheet, sheet = create_credentials()
@@ -238,9 +248,10 @@ def create_files(path: str) -> None:
     save_credentials(worksheet)
     logger.info("Files created")
 
+
 def configure_logging():
     """
-    legt loggin level fest
+    Legt logging level fest
     :return:
     """
     global verbose, quiet
@@ -252,6 +263,7 @@ def configure_logging():
         logger.error("Quiet mode activated")
     else:
         logger.setLevel(logging.INFO)
+
 
 def main():
     global verbose, quiet
@@ -270,7 +282,6 @@ def main():
         create_files(path)
     except FileNotFoundError:
         logger.error("File not found")
-
 
 
 if __name__ == "__main__":
