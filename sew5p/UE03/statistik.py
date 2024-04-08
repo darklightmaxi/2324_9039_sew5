@@ -81,8 +81,8 @@ def main(args: argparse.Namespace) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Calculate number of ways through a labyrinth")
-    parser.add_argument("filename", help="file containing the labyrinth to solve", default="./", nargs='?')
+    parser = argparse.ArgumentParser(description="Make a picture out of your git commits")
+    parser.add_argument("filename", help="Gitfile", default="./", nargs='?')
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-v", "--verbose", action="store_true", help="log everything")
     group.add_argument("-q", "--quiet", action="store_true", help="log only errors")
