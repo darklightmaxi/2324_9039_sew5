@@ -16,14 +16,26 @@ plt.figure(figsize=(10, 6), dpi=80)
 plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="cosine")
 plt.plot(X, S, color="red", linewidth=2.5, linestyle="-", label="sine")
 
+"""
+Limits for the plot
+"""
 plt.xlim(min(X) * 1.1, max(X) * 1.1)
 plt.ylim(min(C) * 1.1, max(C) * 1.1)
 
+"""
+Show specific points
+"""
 plt.xticks([-PI, -PI / 2, 0, PI / 2, PI], [r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
 plt.yticks([-1, 0, 1], [r'$-1$', r'$0$', r'$+1$'])
 
+"""
+Legend
+"""
 plt.legend(loc="upper left", frameon=False)
 
+"""
+GCA = GetCurrentAxes
+"""
 ax = plt.gca()
 ax.spines['right'].set_color('none')
 ax.spines['top'].set_color('none')
@@ -44,21 +56,12 @@ plt.annotate(r'$\cos(\frac{2\pi}{3})=-\frac{1}{2}$',
              xytext=(-90, -50), textcoords='offset points', fontsize=16,
              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
-# Schönheit: bessere Sichtbarkeit für die Ticks
-for label in ax.get_xticklabels() + ax.get_yticklabels():
-    label.set_fontsize(16)
-    label.set_bbox(dict(facecolor='white', edgecolor='None', alpha=0.65))
-
 t = -PI / 4
 
-# Schönheit: bessere Sichtbarkeit für die Ticks
+# Fontsize ändern
 for label in ax.get_xticklabels() + ax.get_yticklabels():
     label.set_fontsize(13)
-    label.set_bbox(dict(facecolor='white', edgecolor='None', alpha=0.65))
-
-ax.set_axisbelow(True)
 
 plt.title("Maxis Grafik")
-
 plt.savefig("plot1_kniely.png", dpi=80)
 plt.show()
