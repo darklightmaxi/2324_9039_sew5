@@ -41,7 +41,7 @@ def main(args: argparse.Namespace) -> None:
 
         time_window = 0.5  # 1/4 hour
 
-        weekdays = ["", "mo", "di", "mi", "do", "fr", "sa", "so", ""]
+        weekdays = ["", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So", ""]
 
         grouped_data = Counter()
         nbrOfCommits = 0
