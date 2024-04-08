@@ -1,6 +1,8 @@
 from matplotlib import pyplot as plt
 from math import pi, cos, sin
 
+__author__ = "Maximilian Kniely"
+
 PI = pi
 
 CNT = 1024
@@ -57,6 +59,20 @@ plt.annotate(r'$\cos(\frac{2\pi}{3})=-\frac{1}{2}$',
              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
 t = -PI / 4
+
+plt.plot([t, t], [0, cos(t)], color='green', linewidth=2.5, linestyle="--")
+plt.scatter([t, ], [cos(t), ], 50, color='green')
+plt.annotate(r'$\sin(\minus\frac{\pi}{4})=-\frac{\sqrt{2}}{2}$',
+             xy=(t, sin(t)), xycoords='data',
+             xytext=(-10, -30), textcoords='offset points', fontsize=16,
+             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+plt.plot([t, t], [0, sin(t)], color='orange', linewidth=2.5, linestyle="--")
+plt.scatter([t, ], [sin(t), ], 50, color='orange')
+plt.annotate(r'$\cos(\minus\frac{\pi}{4})=\frac{\sqrt{2}}{2}$',
+             xy=(t, cos(t)), xycoords='data',
+             xytext=(-90, +30), textcoords='offset points', fontsize=16,
+             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
 # Fontsize ändern
 for label in ax.get_xticklabels() + ax.get_yticklabels():

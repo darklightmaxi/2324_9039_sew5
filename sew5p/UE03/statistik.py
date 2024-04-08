@@ -7,9 +7,14 @@ from subprocess import Popen, PIPE
 import matplotlib.pyplot as plt
 import numpy as np
 
+__author__ = "Maximilian Kniely"
 
 def get_logger(args: argparse.Namespace) -> logging.Logger:
-    """creates a logger"""
+    """
+    Creates a Logger
+    :param args: Argparse args
+    :return: Logger
+    """
     logger = logging.getLogger('my_logger')
     if args.verbose:
         logger.setLevel(logging.DEBUG)
@@ -30,7 +35,14 @@ def get_logger(args: argparse.Namespace) -> logging.Logger:
     return logger
 
 
-def main(args: argparse.Namespace) -> None:
+def createPlot(args: argparse.Namespace) -> None:
+    """
+    Creates a Plot "statistic_new.png", that contains all git commits
+    :param args: Argparse args
+    :return: Nothing
+    """
+
+    # Logger
     logger = get_logger(args)
     try:
         git_log = ["git", "-C", args.filename, "log", "--pretty=format:%ad", "--date=format-local:%a-%H-%M"]
@@ -88,4 +100,4 @@ if __name__ == "__main__":
     group.add_argument("-v", "--verbose", action="store_true", help="log everything")
     group.add_argument("-q", "--quiet", action="store_true", help="log only errors")
     args = parser.parse_args()
-    main(args)
+    createPlot(args)
