@@ -1,7 +1,11 @@
 package UE04;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
+/**
+ * @author Maximilian Kniely
+ */
 public class Node implements Comparable<Node> {
     /**
      * Unique Identifier
@@ -27,6 +31,10 @@ public class Node implements Comparable<Node> {
      * has this node been visited?
      */
     private boolean isVisited;
+
+    public boolean getVisited(){
+        return isVisited;
+    }
 
     public Node(String id) {
         this.id = id;
@@ -76,12 +84,21 @@ public class Node implements Comparable<Node> {
         return previous == null && distance == 0;
     }
 
-    public void visit(PriorityQueue<Node> queue){
+    public void visit(PriorityQueue<Node> queue) {
         isVisited = true;
         for (Edge edge : edges) {
-            Node neighbor = edge.getNeighbor();
-            queue.add(neighbor)
+            Node neighbour = edge.getNeighbor();
+            int newDist = distance + edge.getDistance();
+            if (newDist < neighbour.distance) {
+                if (edge.getDistance() == Integer.MAX_VALUE) queue.remove(edge.getNeighbor());
+                neighbour.distance = newDist;
+                neighbour.previous = this;
+                queue.add(edge.getNeighbor());
+            }
         }
     }
 
+    public String edgesToStr() {
+        return edges.stream().map(it -> it.getNeighbor().id + ":" + it.getDistance()).collect(Collectors.joining(" ", "", ""));
+    }
 }
