@@ -47,7 +47,8 @@ def main(args: argparse.Namespace) -> None:
         nbrOfCommits = 0
         for i in out.splitlines():
             cur = i.split("-")
-            grouped_data[(cur[0].lower(), (np.floor((int(cur[1]) + int(cur[2]) / 60) / time_window) * time_window))] += 1
+            grouped_data[
+                (cur[0].lower(), (np.floor((int(cur[1]) + int(cur[2]) / 60) / time_window) * time_window))] += 1
             nbrOfCommits += 1
 
         logger.debug("Sorted Data")
@@ -70,7 +71,7 @@ def main(args: argparse.Namespace) -> None:
         plt.xlabel('Time')
         plt.title(f'Maximilian Kniely: {nbrOfCommits} commits')
         plt.grid(True, which="major", axis="y", linestyle="-", linewidth=2, color='black')
-        plt.xlabel('Weekday')
+        plt.xlabel('Hour')
         logger.debug("Set the data")
 
         plt.savefig("statistic_new.png", dpi=72)
