@@ -1,190 +1,139 @@
 package UE04;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
 /**
+ * Die Klasse Graph repräsentiert einen Graphen und implementiert das Interface IOfferDistance.
+ * Sie ermöglicht das Einlesen eines Graphen aus einer Adjazenzmatrix-Datei,
+ * die Berechnung aller kürzesten Pfade mittels Dijkstras Algorithmus
+ * sowie das Anbieten von Distanzen für die Verwendung im Algorithmus.
+ *
  * @author Maximilian Kniely
  */
-class Graph {
-    /**
-     * reads the graph
-     * @param p the path of the graph
-     * @throws IOException if the file is not found
-     */
-    public Graph(Path p) throws IOException {
-        readGraphFromAdjacencyMatrixFile(p);
+public class Graph implements IOfferDistance {
+
+    private TreeSet<Node> pq;
+    private List<Node> nodes;
+    private Map<String, Node> nodeMap = new TreeMap<>();
+
+    public List<Node> getNodes(){
+        return this.nodes;
+    }
+
+    public Map<String, Node> getNodeMap(){
+        return this.nodeMap;
     }
 
     /**
-     * all nodes inside the graph
+     * Konstruktor für die Graph Klasse.
+     * Initialisiert die PriorityQueue, die Liste von Knoten und die Map zur Speicherung von Knoten.
      */
-    private final List<Node> nodes = new ArrayList<>();
-
+    public Graph() {
+        pq = new TreeSet<>();
+        nodes = new ArrayList<>();
+    }
 
     /**
-     * reads the graph from file
-     * @param path the path of the file
-     * @throws IOException if the file is not found
+     * Liest den Graphen aus einer Adjazenzmatrix-Datei ein.
+     *
+     * @param filePath der Pfad zur Adjazenzmatrix-Datei
+     * @throws IOException wenn ein Fehler beim Lesen der Datei auftritt
      */
-    public void readGraphFromAdjacencyMatrixFile(Path path) throws IOException {
-        List<String> lines = Files.readAllLines(path);
-        String[] headers = lines.get(0).split(";");
-        if (lines.size() != headers.length)
-            throw new IllegalArgumentException("The number of rows and columns must be equal.");
-        for (int i = 1; i < lines.size(); i++) {
-            String[] parts = lines.get(i).split(";");
-            if (!headers[i].equals(parts[0]))
-                throw new IllegalArgumentException("The id from the first element of the row '" + parts[0] + "' and first column '" + headers[i] + "' are not equal for index '" + (i - 1) + "'.");
-            Node node = findOrCreateNode(parts[0]);
+    public void readGraphFromAdjacencyMatrixFile(String filePath) throws Exception {
 
-            if (headers.length < parts.length)
-                throw new IllegalArgumentException("The number of rows and columns must be equal!");
-            for (int j = 1; j < parts.length; j++) {
-                if (!parts[j].isEmpty()) {
-                    int distance = Integer.parseInt(parts[j]);
-                    node.addEdge(new Edge(distance, findOrCreateNode(headers[j])));
+        try {
+
+            List<String> lines = Files.readAllLines(Path.of(filePath));
+            String[] names = lines.get(0).split(";", -1);
+            for (int i = 1; i < names.length; i++) {
+                Node node = new Node(names[i]);
+                nodeMap.put(names[i], node);
+                this.nodes.add(node);
+            }
+            for (int i = 1; i < lines.size(); i++) {
+                var cur = lines.get(i).split(";", -1);
+
+                if (cur.length != names.length || !cur[0].equals(names[i]) || lines.size() != names.length) {
+                    throw new Exception("Graph is invalid!");
+                }
+
+                for (int j = 1; j < names.length; j++) {
+                    if (cur[j].isEmpty()) {
+                        continue;
+                    }
+                    nodeMap.get(cur[0]).addEdge(new Edge(Integer.parseInt(cur[j]), nodeMap.get(names[j])));
                 }
             }
         }
-    }
-
-    /**
-     * finds or creates a node if it doesn't exist
-     * @param id the id of the node
-     * @return the found or created node
-     */
-    private Node findOrCreateNode(String id) {
-        Optional<Node> node = nodes.stream().filter(a -> Objects.equals(a.getId(), id)).findFirst();
-        if (node.isPresent()) return node.get();
-        Node newNode = new Node(id);
-        nodes.add(newNode);
-        return newNode;
-    }
-
-    /**
-     * calculates the distance and path for each node from the start
-     * @param startNodeId the start node
-     */
-    public void calcWithDijkstra(String startNodeId) {
-
-        if (startNodeId == null) {
-            throw new IllegalArgumentException("Start node id must not be null.");
-        }
-
-        for (Node node : nodes) {
-            node.init();
-        }
-
-        Node startNode = findNodeById(startNodeId);
-        if (startNode == null) {
-            throw new IllegalArgumentException("Start node " + startNodeId + " not found in the graph.");
-        }
-        startNode.setStartNode();
-
-        PriorityQueue<Node> queue = new PriorityQueue<>(Node::compareTo);
-        queue.add(startNode);
-
-        while (!queue.isEmpty()) {
-            Node currentNode = queue.poll();
-            if (currentNode.getVisited()) {
-                continue;
-            }
-            currentNode.visit(queue);
+        catch (Exception invalidGraph){
+            throw new Exception("Graph is invalid!");
         }
     }
 
     /**
-     * finds the node by the id
-     * @param id the id of the node
-     * @return the node or null if it doesn't exist
-     */
-    private Node findNodeById(String id) {
-        for (Node node : nodes) {
-            if (node.getId().equals(id)) {
-                return node;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-
-        Node startNode = nodes.stream().filter(Node::isFirst).findFirst().orElse(null);
-
-        for (Node node : nodes) {
-            if (node == startNode) builder
-                    .append(node.getId())
-                    .append("----> is start node ")
-                    .append(node.edgesToStr())
-                    .append("\n");
-            else builder
-                    .append(node.getId())
-                    .append(" [totalDistance: ")
-                    .append(node.getDistance() != Integer.MAX_VALUE ? node.getDistance() : "?").append("] ")
-                    .append(node.edgesToStr())
-                    .append("\n");
-        }
-        return builder.toString();
-    }
-
-    /**
-     * reads all paths from any to the startnode and returns them in a "beautiful" way
+     * Gibt eine Zeichenkette mit den kürzesten Pfaden für alle Knoten zurück.
+     *
+     * @return eine Zeichenkette mit den kürzesten Pfaden für alle Knoten
      */
     public String getAllPaths() {
-        Node startNode = nodes.stream().filter(Node::isFirst).findFirst().orElse(null);
-        StringBuilder builder = new StringBuilder();
-        for (Node node : nodes) {
-            if (node == startNode) builder
-                    .append(node.getId())
-                    .append(": is start node")
-                    .append("\n");
-            else if (node.getDistance() == Integer.MAX_VALUE) builder
-                    .append("no path available for ")
-                    .append(node.getId())
-                    .append(" [totalDistance: ?] ")
-                    .append(node.edgesToStr())
-                    .append("\n");
-            else builder
-                        .append(node.getId())
-                        .append(" ")
-                        .append(getPath(node))
-                        .append("\n");
+        String out = "";
+        for (var node : nodes) {
+            Node cur = node;
+            if (cur.getPrevious() == null){
+                out += cur.getId() + "----> is start node\n";
+                continue;
+            }
+            out += "Distance: " + cur.getDistance() + " ";
+            while (cur.getPrevious() != null) {
+                out += cur.getId() + " -> ";
+                cur = cur.getPrevious();
+            }
+            out += cur.getId() + "\n";
         }
-        return builder.toString();
+        return out;
     }
 
     /**
-     * returns the path for a single node to get back to the start node
-     * @param node the node where to start
-     * @return the path
+     * Berechnet den kürzesten Pfad von einem Startknoten zu allen anderen Knoten im Graphen.
+     *
+     * @param startNodeId die ID des Startknotens
      */
-    private String getPath(Node node) {
-        List<String> path = new ArrayList<>();
-        for (Node cur = node; cur.getPrevious() != null; cur = cur.getPrevious()) {
-            path.add("--(" + cur.getDistance() + ")-> " + cur.getId());
+    public void calcWithDijkstra(String startNodeId) {
+        for (var node : nodes) node.init();
+        pq = new TreeSet<>();
+        Node start = nodeMap.get(startNodeId);
+        start.setDistance(0);
+
+        pq.add(start);
+        while (!pq.isEmpty()) {
+            Node cur = pq.first();
+            pq.remove(cur);
+
+            if (cur.getVisited())
+                continue;
+
+            cur.setVisited(true);
+            cur.visit(this);
         }
-        Collections.reverse(path);
-        return String.join(" ", path);
     }
 
-    public static void main(String[] args) throws IOException {
-        Graph g = new Graph(Path.of("src/UE04/resources/Graph_A-H.csv"));
-        System.out.println(g);
-        System.out.println();
-        System.out.println(g.getAllPaths());
-        System.out.println();
-
-//        g.calcWithDijkstra("A");
-        g.calcWithDijkstra("A");
-        System.out.println(g);
-        System.out.println();
-        System.out.println(g.getAllPaths());
-        System.out.println();
-
+    /**
+     * Fügt eine neue Distanz für den nächsten zu betrachtenden Knoten hinzu.
+     * @param node2change Node die gechanged werden soll
+     * @param newPrevious Neue Previous Node
+     * @param newDistance Neue Distance
+     */
+    @Override
+    public void offerDistance(Node node2change, Node newPrevious, int newDistance) {
+        if (node2change.getDistance() > newDistance) {
+            pq.remove(node2change);
+            node2change.setDistance(newDistance);
+            node2change.setPrevious(newPrevious);
+            pq.add(node2change);
+        }
     }
 }

@@ -1,40 +1,45 @@
 package UE04;
 
 /**
+ * Die Klasse Edge repräsentiert eine Edge im Graphen.
+ * Sie speichert die Distanz zum Nachbarknoten und den Nachbarknoten selbst.
+ *
  * @author Maximilian Kniely
  */
-public class Edge implements Comparable<Edge>{
-    /**
-     * distance of that edge
-     */
-    private final int distance;
+public class Edge {
+
+    private int distance;
+    private Node neighbour;
+
+    public Node getNeighbour(){
+        return this.neighbour;
+    }
+
+    public int getDistance(){
+        return this.distance;
+    }
 
     /**
-     * neighbor of that edge
+     * Konstruktor für die Edge Klasse.
+     * Initialisiert die Kante mit einer Distanz und einem Nachbarknoten.
+     *
+     * @param distance die Distanz zur Nachbarknoten
+     * @param neighbour der Nachbarknoten
      */
-    private final Node neighbor;
-    
-    public Edge(int distance, Node neighbor) {
+    public Edge(int distance, Node neighbour) {
         this.distance = distance;
-        this.neighbor = neighbor;
-    }
-    
-    public Node getNeighbor() {
-        return neighbor;
-    }
-    
-    public int getDistance() {
-        return distance;
+        this.neighbour = neighbour;
     }
 
+    /**
+     * Gibt einen String mit den Attributen der Edge zurück.
+     * @return ein String mit den Attributen der Kante
+     */
     @Override
     public String toString() {
-        return "Edge [distance=" + distance + ", neighbor=" + neighbor.getId() + "]";
+        return "Edge{" +
+                "distance=" + distance +
+                ", neighbour=" + neighbour +
+                '}';
     }
-
-    @Override
-    public int compareTo(Edge o) {
-        return neighbor.getId().compareTo(o.neighbor.getId());
-    }
-
 }
