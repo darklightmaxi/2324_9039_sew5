@@ -28,5 +28,6 @@ public class main {
         }
 
         System.out.println("Count of invalid Graphs: " + invalid_graphs);
+
     }
 }
