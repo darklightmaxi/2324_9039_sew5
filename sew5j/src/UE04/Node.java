@@ -16,30 +16,37 @@ public class Node implements Comparable<Node> {
     private Node previous;
     private boolean isVisited;
 
+    // Set Previous Node
     public void setPrevious(Node previous){
         this.previous = previous;
     }
 
+    // Get Distance
     public int getDistance(){
         return this.distance;
     }
 
+    // Get Previous Node
     public Node getPrevious(){
         return this.previous;
     }
 
+    // Get Node ID
     public String getId(){
         return this.id;
     }
 
+    // Set Distance
     public void setDistance(int distance){
         this.distance = distance;
     }
 
+    // Get if visited
     public boolean getVisited(){
         return this.isVisited;
     }
 
+    // Set visited
     public void setVisited(boolean isVisited){
         this.isVisited = isVisited;
     }
