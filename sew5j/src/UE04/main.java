@@ -1,4 +1,5 @@
 package UE04;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -15,8 +16,7 @@ public class main {
             Graph graph = new Graph();
             try {
                 graph.readGraphFromAdjacencyMatrixFile(prefix + file);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Invalid file: " + file + "\n");
                 invalid_graphs++;
                 continue;
@@ -28,6 +28,5 @@ public class main {
         }
 
         System.out.println("Count of invalid Graphs: " + invalid_graphs);
-
     }
 }
