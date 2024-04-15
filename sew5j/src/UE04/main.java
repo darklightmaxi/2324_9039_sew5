@@ -14,6 +14,7 @@ public class main {
 
         int invalid_graphs = 0;
 
+        // Prefix aka the path, where graphs are stored
         String prefix = "src/UE04/resources/";
         // Filenames
         String[] files = {"big.csv", "Graph_12_with_names.csv", "Graph_A-H.csv", "Graph_A-M.csv", "kaputt_Graph_A-H_a.csv", "kaputt_Graph_A-H_b.csv", "kaputt_Graph_A-H_c.csv", "kaputt_Graph_A-H_d.csv", "kaputt_Graph_A-H_e.csv", "kaputt_Graph_A-H_f.csv", "unzusammenhaengend_Graph_A-M.csv"};
