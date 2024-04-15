@@ -15,7 +15,7 @@ public class Node implements Comparable<Node> {
     /**
      * all edges the node has
      */
-    private HashSet<Edge> edges; // Schneller als Treeset, Reihenfolge ist mir egal
+    private TreeSet<Edge> edges;
 
     /**
      * current distance to this node
