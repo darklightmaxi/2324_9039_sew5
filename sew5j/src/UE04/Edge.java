@@ -7,6 +7,17 @@ package UE04;
  * @author Maximilian Kniely
  */
 public class Edge {
+    /**
+     * Konstruktor für die Edge Klasse.
+     * Initialisiert die Kante mit einer Distanz und einem Nachbarknoten.
+     *
+     * @param distance die Distanz zur Nachbarknoten
+     * @param neighbour der Nachbarknoten
+     */
+    public Edge(int distance, Node neighbour) {
+        this.distance = distance;
+        this.neighbour = neighbour;
+    }
 
     private int distance;
     private Node neighbour;
@@ -19,18 +30,6 @@ public class Edge {
     // Get distance to neighbour
     public int getDistance(){
         return this.distance;
-    }
-
-    /**
-     * Konstruktor für die Edge Klasse.
-     * Initialisiert die Kante mit einer Distanz und einem Nachbarknoten.
-     *
-     * @param distance die Distanz zur Nachbarknoten
-     * @param neighbour der Nachbarknoten
-     */
-    public Edge(int distance, Node neighbour) {
-        this.distance = distance;
-        this.neighbour = neighbour;
     }
 
     /**
