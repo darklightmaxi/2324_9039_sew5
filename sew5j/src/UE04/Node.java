@@ -21,19 +21,9 @@ public class Node implements Comparable<Node> {
         this.previous = previous;
     }
 
-    // Get Distance
-    public int getDistance(){
-        return this.distance;
-    }
-
     // Get Previous Node
     public Node getPrevious(){
         return this.previous;
-    }
-
-    // Get Node ID
-    public String getId(){
-        return this.id;
     }
 
     // Set Distance
@@ -41,9 +31,14 @@ public class Node implements Comparable<Node> {
         this.distance = distance;
     }
 
-    // Get if visited
-    public boolean getVisited(){
-        return this.isVisited;
+    // Get Distance
+    public int getDistance(){
+        return this.distance;
+    }
+
+    // Get Node ID
+    public String getId(){
+        return this.id;
     }
 
     // Set visited
@@ -51,6 +46,10 @@ public class Node implements Comparable<Node> {
         this.isVisited = isVisited;
     }
 
+    // Get if visited
+    public boolean getVisited(){
+        return this.isVisited;
+    }
     /**
      * Konstruktor für die Node Klasse.
      * Initialisiert den Knoten mit einer ID, einer leeren Liste von Kanten,
