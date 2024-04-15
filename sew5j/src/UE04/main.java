@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class main {
+    /**
+     * Main Class made to test Dijkstra
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         //File[] files = new File("src/UE04/resources/").listFiles();
 
