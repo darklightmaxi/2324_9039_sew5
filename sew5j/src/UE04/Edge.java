@@ -11,10 +11,12 @@ public class Edge {
     private int distance;
     private Node neighbour;
 
+    // Get Neighbour on other side of edge
     public Node getNeighbour(){
         return this.neighbour;
     }
 
+    // Get distance to neighbour
     public int getDistance(){
         return this.distance;
     }
